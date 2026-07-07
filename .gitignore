@@ -1,0 +1,26 @@
+# Frontend
+my-app/node_modules/
+my-app/dist/
+my-app/dist-ssr/
+my-app/*.local
+
+# Backend
+task-manager-api/target/
+task-manager-api/data/
+task-manager-api/src/main/resources/privateKey.pem
+task-manager-api/src/main/resources/publicKey.pem
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
