@@ -26,58 +26,90 @@ function LoginPage() {
       login(loggedInUser, loginResp.token);
       navigate("/");
     } catch {
-      showToast("Invalid Credentials", "error");
+      showToast("Invalid credentials. Please try again.", "error");
     }
   };
 
   return (
     <div className={styles.page}>
-      <div className={styles.card}>
-        <div className="text-center mb-4">
-          <div className={`${styles.icon} text-primary mb-2`}>
+      {/* Left decorative panel */}
+      <div className={styles.panel}>
+        <div className={styles.panelLogo}>
+          <div className={styles.panelLogoIcon}>
             <i className="bi bi-check2-square" />
           </div>
-          <h5 className="fw-bold mb-1">Task Management System</h5>
-          <p className="text-muted small mb-0">Sign in to your account</p>
+          <span className={styles.panelLogoText}>
+            Task<span className={styles.panelLogoAccent}>Flow</span>
+          </span>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label fw-semibold small text-secondary">Username</label>
-            <div className="input-group">
-              <span className="input-group-text bg-light">
-                <i className="bi bi-person text-muted" />
-              </span>
-              <input
-                className="form-control"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+        <h1 className={styles.panelHeading}>
+          Manage your tasks<br />with clarity.
+        </h1>
+        <p className={styles.panelSub}>
+          A clean, focused workspace to plan, track, and complete your work — all in one place.
+        </p>
+
+        <div className={styles.panelFeatures}>
+          {[
+            { icon: "bi-lightning-charge", text: "Fast task creation and editing" },
+            { icon: "bi-bar-chart-line", text: "Visual progress at a glance" },
+            { icon: "bi-shield-check", text: "Role-based access control" },
+          ].map((f) => (
+            <div className={styles.panelFeature} key={f.icon}>
+              <div className={styles.panelFeatureIcon}>
+                <i className={`bi ${f.icon}`} />
+              </div>
+              {f.text}
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right form */}
+      <div className={styles.formSide}>
+        <div className={styles.formBox}>
+          <div className={styles.formHeader}>
+            <h2 className={styles.formTitle}>Welcome back</h2>
+            <p className={styles.formSubtitle}>Sign in to your account to continue</p>
           </div>
 
-          <div className="mb-4">
-            <label className="form-label fw-semibold small text-secondary">Password</label>
-            <div className="input-group">
-              <span className="input-group-text bg-light">
-                <i className="bi bi-lock text-muted" />
-              </span>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+          <form onSubmit={handleSubmit}>
+            <div className={styles.fieldGroup}>
+              <label className={styles.label}>Username</label>
+              <div className={styles.inputWrap}>
+                <i className={`bi bi-person ${styles.inputIcon}`} />
+                <input
+                  className={styles.input}
+                  placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  autoComplete="username"
+                />
+              </div>
             </div>
-          </div>
 
-          <button type="submit" className={styles.submitBtn}>
-            <i className="bi bi-box-arrow-in-right me-2" />
-            Sign In
-          </button>
-        </form>
+            <div className={styles.fieldGroup}>
+              <label className={styles.label}>Password</label>
+              <div className={styles.inputWrap}>
+                <i className={`bi bi-lock ${styles.inputIcon}`} />
+                <input
+                  type="password"
+                  className={styles.input}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+                />
+              </div>
+            </div>
+
+            <button type="submit" className={styles.submitBtn}>
+              <i className="bi bi-box-arrow-in-right" />
+              Sign In
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

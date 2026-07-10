@@ -19,27 +19,32 @@ function TaskItem({ tasks, onDelete, onView }: Props) {
 
   const priorityBadge = (priority: string) => {
     const classMap: Record<string, string> = {
-      HIGH: styles.badgeHigh,
+      HIGH:   styles.badgeHigh,
       MEDIUM: styles.badgeMedium,
-      LOW: styles.badgeLow,
+      LOW:    styles.badgeLow,
+    };
+    const label: Record<string, string> = {
+      HIGH:   "High",
+      MEDIUM: "Medium",
+      LOW:    "Low",
     };
     return (
       <span className={`${styles.badge} ${classMap[priority] ?? ""}`}>
-        {priority}
+        {label[priority] ?? priority}
       </span>
     );
   };
 
   const statusBadge = (status: string) => {
     const classMap: Record<string, string> = {
-      TODO: styles.badgeTodo,
+      TODO:        styles.badgeTodo,
       IN_PROGRESS: styles.badgeInProgress,
-      DONE: styles.badgeDone,
+      DONE:        styles.badgeDone,
     };
     const label: Record<string, string> = {
-      TODO: "To Do",
+      TODO:        "To Do",
       IN_PROGRESS: "In Progress",
-      DONE: "Done",
+      DONE:        "Done",
     };
     return (
       <span className={`${styles.badge} ${classMap[status] ?? ""}`}>
@@ -51,13 +56,13 @@ function TaskItem({ tasks, onDelete, onView }: Props) {
   return (
     <div>
       <table className="table table-hover align-middle mb-0">
-        <thead className="table-light">
+        <thead>
           <tr>
-            <th className={`${styles.thLabel} ps-3`}>#</th>
+            <th className={`${styles.thLabel} ps-3`} style={{ width: 48 }}>#</th>
             <th className={styles.thLabel}>Title</th>
             <th className={styles.thLabel}>Priority</th>
             <th className={styles.thLabel}>Status</th>
-            <th className={styles.thLabel}>Actions</th>
+            <th className={styles.thLabel} style={{ width: 120 }}>Actions</th>
           </tr>
         </thead>
 
@@ -68,13 +73,14 @@ function TaskItem({ tasks, onDelete, onView }: Props) {
                 <div className={styles.emptyState}>
                   <i className={`bi bi-inbox ${styles.emptyIcon}`} />
                   <p className={styles.emptyText}>No tasks found</p>
+                  <p className={styles.emptyHint}>Try adjusting your search or filters</p>
                 </div>
               </td>
             </tr>
           ) : (
             tasks.map((task, index) => (
               <tr key={task.id}>
-                <td className={`ps-3 ${styles.thLabel}`}>{page * size + index + 1}</td>
+                <td className={`ps-3 ${styles.indexCell}`}>{page * size + index + 1}</td>
                 <td>
                   <div className={styles.titleCell}>{task.title}</div>
                   {task.description && (
@@ -87,21 +93,21 @@ function TaskItem({ tasks, onDelete, onView }: Props) {
                   <div className="d-flex gap-1">
                     <button
                       className={styles.actionBtn}
-                      title="View"
+                      title="View details"
                       onClick={() => onView(task)}
                     >
                       <i className="bi bi-eye" />
                     </button>
                     <button
                       className={styles.actionBtn}
-                      title="Edit"
+                      title="Edit task"
                       onClick={() => navigate(`${ROUTES.CREATE_TASK}/${task.id}`)}
                     >
                       <i className="bi bi-pencil" />
                     </button>
                     <button
                       className={`${styles.actionBtn} ${styles.actionBtnDanger}`}
-                      title="Delete"
+                      title="Delete task"
                       onClick={() => onDelete(task)}
                     >
                       <i className="bi bi-trash" />

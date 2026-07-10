@@ -12,17 +12,17 @@ function TaskStats({ tasks }: Props) {
   const todo = tasks.filter((t) => t.status === TaskStatus.TODO).length;
 
   const stats = [
-    { label: "Total", value: total, icon: "bi-stack", cls: styles.statTotal },
-    { label: "To Do", value: todo, icon: "bi-circle", cls: styles.statTodo },
-    { label: "In Progress", value: inProgress, icon: "bi-hourglass-split", cls: styles.statProgress },
-    { label: "Completed", value: completed, icon: "bi-check-circle-fill", cls: styles.statDone },
+    { label: "Total Tasks",  value: total,      icon: "bi-stack",            cls: styles.statTotal    },
+    { label: "To Do",        value: todo,        icon: "bi-circle",           cls: styles.statTodo     },
+    { label: "In Progress",  value: inProgress,  icon: "bi-hourglass-split",  cls: styles.statProgress },
+    { label: "Completed",    value: completed,   icon: "bi-check-circle-fill", cls: styles.statDone    },
   ];
 
   return (
     <div className={styles.statsGrid}>
       {stats.map((s) => (
-        <div key={s.label} className={styles.statCard}>
-          <div className={`${styles.iconWrap} ${s.cls}`}>
+        <div key={s.label} className={`${styles.statCard} ${s.cls}`}>
+          <div className={styles.iconWrap}>
             <i className={`bi ${s.icon}`} />
           </div>
           <div className={styles.statBody}>

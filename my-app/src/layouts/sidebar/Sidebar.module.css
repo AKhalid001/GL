@@ -1,55 +1,40 @@
 .sidebar {
-  width: 0;
-  overflow: hidden;
-  transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  background: var(--sidebar-bg);
+  width: var(--sidebar-width);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-}
-
-.show {
-  width: var(--sidebar-width);
+  background: var(--chrome-bg);
+  border-right: 1px solid var(--chrome-border);
+  height: 100%;
 }
 
 .inner {
-  width: var(--sidebar-width);
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0;
   overflow: hidden;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 20px 20px 18px;
-  color: var(--sidebar-brand);
-  font-size: var(--font-lg);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-
-.brandIcon {
-  font-size: 1.3rem;
-  color: #818cf8;
-}
-
+/* ── Nav section ────────────────────────────────── */
 .navSection {
-  padding: 20px 12px 8px;
+  padding: var(--space-lg) var(--space-sm);
   flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) transparent;
 }
+
+.navSection::-webkit-scrollbar { width: 4px; }
+.navSection::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
 
 .navLabel {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  padding: 0 8px 8px;
+  color: rgba(255,255,255,0.22);
+  padding: 0 12px 10px;
+  margin: 0;
 }
 
 .navList {
@@ -61,38 +46,113 @@
   gap: 2px;
 }
 
+/* ── Nav link ───────────────────────────────────── */
 .navLink {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
+  gap: 11px;
+  padding: 10px 12px;
   border-radius: var(--radius-sm);
-  color: var(--sidebar-text);
+  color: rgba(255,255,255,0.52);
   text-decoration: none;
   font-size: var(--font-sm);
   font-weight: 500;
-  transition: all 0.18s ease;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
 }
 
 .navLink:hover {
   background: rgba(255,255,255,0.06);
-  color: var(--sidebar-text-hover);
+  color: rgba(255,255,255,0.85);
 }
 
 .navLink i {
   font-size: 1rem;
-  width: 18px;
+  width: 20px;
   text-align: center;
-  opacity: 0.8;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
 }
 
+/* Active state */
 .active {
-  background: var(--sidebar-active-bg);
-  color: var(--sidebar-active-text);
+  background: rgba(99,102,241,0.22);
+  color: #ffffff;
   font-weight: 600;
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--chrome-icon-active);
+  border-radius: 0 2px 2px 0;
 }
 
 .active i {
   opacity: 1;
-  color: #818cf8;
+  color: var(--chrome-icon-active);
+}
+
+/* ── Footer user strip ──────────────────────────── */
+.sidebarFooter {
+  padding: var(--space-md) var(--space-sm);
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.userStrip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  min-width: 0;
+}
+
+.userStripAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-mid) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.userStripInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.userStripName {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userStripRole {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--chrome-icon-active);
+  opacity: 0.85;
 }

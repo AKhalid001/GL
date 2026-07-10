@@ -51,9 +51,12 @@ function TaskForm({ onAddTask, editingTask, onUpdateTask, onCancelEdit }: Props)
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.formHeader}>
-        <h5 className={styles.formTitle}>
+        <p className={styles.formEyebrow}>
+          {editingTask ? "Editing task" : "New task"}
+        </p>
+        <h2 className={styles.formTitle}>
           {editingTask ? "Edit Task" : "Create New Task"}
-        </h5>
+        </h2>
         <p className={styles.formSubtitle}>
           {editingTask ? "Update the task details below" : "Fill in the details to create a new task"}
         </p>

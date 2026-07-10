@@ -35,10 +35,14 @@ function TaskMain() {
 
   return (
     <div className={layoutStyles.page}>
+      {/* Page header */}
       <div className={pageStyles.pageHeader}>
-        <div>
-          <h4 className={pageStyles.pageTitle}>Tasks</h4>
-          <p className={pageStyles.pageSubtitle}>Manage and track your work</p>
+        <div className={pageStyles.pageTitleGroup}>
+          <span className={pageStyles.pageBreadcrumb}>
+            <i className="bi bi-list-check" /> Tasks
+          </span>
+          <h1 className={pageStyles.pageTitle}>My Tasks</h1>
+          <p className={pageStyles.pageSubtitle}>Manage and track all your work in one place</p>
         </div>
         <button
           className={pageStyles.addBtn}
@@ -49,8 +53,10 @@ function TaskMain() {
         </button>
       </div>
 
+      {/* Stats */}
       <TaskStats tasks={tasks} />
 
+      {/* Toolbar */}
       <div className={layoutStyles.section}>
         <div className={pageStyles.toolbar}>
           <div className={pageStyles.searchWrap}>
@@ -69,6 +75,7 @@ function TaskMain() {
         </div>
       </div>
 
+      {/* Task list */}
       <div className={layoutStyles.section}>
         <TaskList
           tasks={filteredTasks}

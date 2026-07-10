@@ -1,0 +1,109 @@
+.thLabel {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.usernameCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.miniAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #818cf8 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+.usernameText {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: var(--font-base);
+}
+
+.emailText {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+}
+
+.roleBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.roleAdmin {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid #c7d2fe;
+}
+
+.roleUser {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid var(--color-border);
+}
+
+.actionBtn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  transition: all var(--transition-fast);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.actionBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+
+.actionBtnDanger:hover {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+  border-color: #fecaca;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 64px 0;
+  color: var(--color-muted);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+  opacity: 0.35;
+}
+
+.emptyText {
+  font-size: var(--font-sm);
+  font-weight: 500;
+}

@@ -2,24 +2,20 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../features/auth/context/AuthContext";
 import styles from "./Header.module.css";
 
-interface Props {
-  onToggleSidebar: () => void;
-}
-
-function Header({ onToggleSidebar }: Props) {
+function Header() {
   const { user, isAuthenticated, logout } = useAuth();
-
   const initials = user?.username?.slice(0, 2).toUpperCase() ?? "U";
 
   return (
     <header className={styles.header}>
-      <button className={styles.toggleBtn} onClick={onToggleSidebar} title="Toggle sidebar">
-        <i className="bi bi-layout-sidebar" />
-      </button>
-
-      <span className={styles.title}>
-        Task<span className={styles.titleAccent}>Flow</span>
-      </span>
+      <Link to="/" className={styles.brand}>
+        <div className={styles.brandIconWrap}>
+          <i className="bi bi-check2-square" />
+        </div>
+        <span className={styles.brandName}>
+          Task<span className={styles.brandAccent}>Flow</span>
+        </span>
+      </Link>
 
       <div className={styles.right}>
         {isAuthenticated && (
@@ -28,8 +24,10 @@ function Header({ onToggleSidebar }: Props) {
               <div className={styles.avatar}>{initials}</div>
               {user?.username}
             </Link>
+            <div className={styles.divider} />
             <button className={styles.logoutBtn} onClick={logout} title="Sign out">
               <i className="bi bi-box-arrow-right" />
+              Sign out
             </button>
           </>
         )}
