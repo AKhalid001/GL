@@ -21,5 +21,18 @@ export const AuthService = {
     async me(){
         const resp = await baseApi.get("auth/me");
         return resp.data
-    }
+    },
+
+    async signup(username:string, email:string, password:string){
+        const response = await baseApi.post(
+        "/auth/signup",
+        {
+            username,
+            email,
+            password
+        }
+      );
+
+      return response.data
+    },
 }

@@ -206,3 +206,77 @@
 
 .submitBtn:hover  { opacity: 0.9; transform: translateY(-1px); }
 .submitBtn:active { transform: translateY(0); }
+
+/* ── Tab switcher ───────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--color-surface-raised);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  margin-bottom: 28px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab:hover {
+  color: var(--color-text);
+  background: rgba(0,0,0,0.03);
+}
+
+.tabActive {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Divider ────────────────────────────────────── */
+.orDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--color-muted);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.orDivider::before,
+.orDivider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ── Switch link ────────────────────────────────── */
+.switchRow {
+  text-align: center;
+  margin-top: 20px;
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+}
+
+.switchLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+  transition: opacity var(--transition-fast);
+}
+
+.switchLink:hover { opacity: 0.75; }
